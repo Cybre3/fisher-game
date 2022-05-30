@@ -1,0 +1,21 @@
+{
+  "name": "exer13_2.-fisher-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cybre3/fisher-game.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cybre3/fisher-game/issues"
+  },
+  "homepage": "https://github.com/Cybre3/fisher-game#readme"
+}
