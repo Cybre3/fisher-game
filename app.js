@@ -59,14 +59,14 @@ function showSmallCodeProjList() {
 
   const innerDiv = document.createElement("div");
   innerDiv.classList = "arrow";
- 
+
   const ul = document.createElement("ul");
   ul.id = "scc-options";
-  
+
   outerDiv.appendChild(innerDiv);
   outerDiv.appendChild(ul);
-  modalDescript.appendChild(outerDiv);  
-  
+  modalDescript.appendChild(outerDiv);
+
   const sccOptions = document.querySelector("#scc-options");
   listSmallCodeProjs(sccOptions);
   showList = true;
@@ -87,7 +87,8 @@ async function listSmallCodeProjs(el) {
         li += `<li class="link"><a href=${link.linkName}>${link.projName}</a></li>`;
         el.innerHTML += li;
       });
-    });
+    })
+    .catch((err) => console.log(err));
 }
 
 // Load catches and return parsed JSON
