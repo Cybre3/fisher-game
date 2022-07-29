@@ -1,0 +1,56 @@
+.challenge-container {
+  background-color: whitesmoke;
+  border: 2px solid slategray;
+  border-radius: 4px;
+  display: inline-block;
+  margin: -85px 0 0 -30px;
+  /* padding: 0 10px; */
+  position: absolute;
+  text-align: center;
+}
+
+.challenge-container ul {
+  margin: 2px 0;
+}
+
+.challenge-container .link {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0 0 0 -40px;
+}
+
+.challenge-container .link a {
+  background-color: gray;
+  border-radius: 3px;
+  color: white;
+  font-size: 14px;
+  margin: 3px;
+  padding: 3px 8px 5px;
+  text-decoration: none;
+}
+
+.challenge-container .link a:hover {
+  background-color: dodgerblue;
+}
+
+.arrow {
+  background-color: whitesmoke;
+  /* border: 2px solid slategray; */
+  height: 18px;
+  margin: 30% 0 0 -4px;
+  position: absolute;
+  transform: rotate(45deg);
+  width: 18px;
+}
+
+.arrow::before {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  content: "";
+  left: 0;
+  bottom: 0;
+  border-bottom: 2px solid slategray;
+  border-left: 2px solid slategray;
+}

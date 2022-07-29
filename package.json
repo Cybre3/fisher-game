@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/Cybre3/fisher-game/issues"
   },
-  "homepage": "https://github.com/Cybre3/fisher-game#readme"
+  "homepage": "https://github.com/Cybre3/fisher-game#readme",
+  "dependencies": {
+    "live-server": "^1.2.2"
+  }
 }

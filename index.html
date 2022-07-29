@@ -1,62 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Biggest Catch</title>
-    <link rel="icon" href="/public/favicon-fish.png">
-    <link rel="stylesheet" href="./styles.css">
-</head>
+    <link rel="icon" href="/public/favicon-fish.png" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../ModalContainer/ModalContainer.css" />
+    <link
+      rel="stylesheet"
+      href="../ModalContainer/CodingChallengesContainer/CodingChallengesContainer.css"
+    />
+  </head>
 
-<body>
-    <h1>Biggest Catches</h1>
+  <body>
+    <div id="modal" class="modal-body">
+      <h2 class="modal-title">Welcome to the Biggest Catch!</h2>
+      <hr />
+      <h4 class="modal-subtitle">Visit other Small Coding Projects</h4>
+      <p class="modal-descript">
+        This
+        <button class="modal-popover-btn">button</button> allows you to view other Small Coding
+        Challenge projects.
+      </p>
+      <hr />
+      <h4 class="modal-subtitle">Load your catches!</h4>
+      <p class="modal-descript">
+        Press the
+        <button class="modal-load-btn">LOAD</button>
+        button to load all catches.
+      </p>
+      <hr />
+      <div class="modal-button-container">
+        <a href="http://starrika-mccloud-portfolio.herokuapp.com/">Back to portfolio</a>
+        <button class="modal-continue-btn">Continue</button>
+      </div>
+    </div>
+
+    <h1 class="page-title">Biggest Catches</h1>
     <fieldset id="main">
-        <legend>Catches</legend>
-        <div id="catches">
-            <div class="catch" data-id="<id-goes-here>">
-                <label>Angler</label>
-                <input type="text" class="angler" value="Paulo Amorim" />
-                <hr>
-                <label>Weight</label>      
-                <input type="number" class="weight" value="636" />
-                <hr>
-                <label>Species</label>
-                <input type="text" class="species" value="Atlantic Blue Marlin" />
-                <hr>
-                <label>Location</label>
-                <input type="text" class="location" value="Vitória, Brazil" />
-                <hr>
-                <label>Bait</label>
-                <input type="text" class="bait" value="trolled pink" />
-                <hr>
-                <label>Capture Time</label>
-                <input type="number" class="captureTime" value="80" />
-                <hr>
-                <button class="update">Update</button>
-                <button class="delete">Delete</button>
-            </div>
+      <legend>Catches</legend>
+      <div id="catches">
+        <div class="catch" data-id="<id-goes-here>">
+          <label>Angler</label>
+          <input type="text" class="angler" value="Paulo Amorim" />
+          <hr />
+          <label>Weight</label>
+          <input type="number" class="weight" value="636" />
+          <hr />
+          <label>Species</label>
+          <input type="text" class="species" value="Atlantic Blue Marlin" />
+          <hr />
+          <label>Location</label>
+          <input type="text" class="location" value="Vitória, Brazil" />
+          <hr />
+          <label>Bait</label>
+          <input type="text" class="bait" value="trolled pink" />
+          <hr />
+          <label>Capture Time</label>
+          <input type="number" class="captureTime" value="80" />
+          <hr />
+          <button class="update">Update</button>
+          <button class="delete">Delete</button>
         </div>
+      </div>
     </fieldset>
     <aside>
-        <button class="load">Load</button>
-        <fieldset id="addForm">
-            <legend>Add Catch</legend>
-            <label>Angler</label>
-            <input type="text" class="angler" />
-            <label>Weight</label>
-            <input type="number" class="weight" />
-            <label>Species</label>
-            <input type="text" class="species" />
-            <label>Location</label>
-            <input type="text" class="location" />
-            <label>Bait</label>
-            <input type="text" class="bait" />
-            <label>Capture Time</label>
-            <input type="number" class="captureTime" />
-            <button class="add">Add</button>
-        </fieldset>
+      <button class="load">Load</button>
+      <fieldset id="addForm">
+        <legend>Add Catch</legend>
+        <label>Angler</label>
+        <input type="text" class="angler" />
+        <label>Weight</label>
+        <input type="number" class="weight" />
+        <label>Species</label>
+        <input type="text" class="species" />
+        <label>Location</label>
+        <input type="text" class="location" />
+        <label>Bait</label>
+        <input type="text" class="bait" />
+        <label>Capture Time</label>
+        <input type="number" class="captureTime" />
+        <button class="add">Add</button>
+      </fieldset>
     </aside>
     <script src="./app.js"></script>
-</body>
-
+  </body>
 </html>

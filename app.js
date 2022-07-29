@@ -1,28 +1,91 @@
-// catch log elements
+//query selector to disable app buttons, not modal buttons
+const app = document.querySelectorAll("button:not(#modal button), input");
 
+// Modal elements
+const modalContainer = document.querySelector(".modal-body");
+const continueButton = document.querySelector(".modal-continue-btn");
+const modalLoadBtn = document.querySelector(".modal-load-btn");
+const modalPopoverBtn = document.querySelector(".modal-popover-btn");
+const challengeContainer = document.querySelector(".challenge-container");
+const modalDescript = document.querySelector(".modal-descript");
+
+// catch log elements
 let catchesDiv = document.getElementById("catches");
 let loadBtn = document.getElementsByClassName("load")[0];
 let addBtn = document.querySelector("button.add");
 let catchDIVS = document.getElementsByClassName("catch");
 // console.log(catchDIVS)
-// let addFormEls = document.getElementById("addForm").querySelectorAll("* input");
 let tempFields = document.querySelectorAll("#addForm > input");
 let [angler, weight, species, loactionCaught, bait, captureTime] = tempFields;
-// console.log(tempFields);
-// console.log(
-//   angler,
-//   weight,
-//   species.value,
-//   loactionCaught,
-//   bait.value,
-//   captureTime.value
-// );
+let showList = false;
 
 // Event Listener
-
 loadBtn.addEventListener("click", loadCatches);
-
 addBtn.addEventListener("click", addCatch);
+continueButton.addEventListener("click", hideModal);
+modalLoadBtn.addEventListener("click", loadCatches);
+modalPopoverBtn.addEventListener("click", toggleList);
+
+app.forEach((el) => {
+  el.disabled = true;
+  el.style.cursor = "auto";
+});
+
+function hideModal() {
+  const app = document.querySelectorAll("button:not(#modal button), input");
+
+  modalContainer.style.animation = "fadeout 0.4s ease-out forwards";
+
+  setTimeout(() => {
+    modalContainer.style.display = "none";
+  }, 500);
+
+  app.forEach((el) => {
+    el.disabled = false;
+    if (el.tagName === "BUTTON") el.style.cursor = "pointer";
+  });
+}
+
+function toggleList() {
+  showList ? hideSmallCodeProjList() : showSmallCodeProjList();
+}
+
+function showSmallCodeProjList() {
+  const outerDiv = document.createElement("div");
+  outerDiv.classList = "challenge-container";
+
+  const innerDiv = document.createElement("div");
+  innerDiv.classList = "arrow";
+ 
+  const ul = document.createElement("ul");
+  ul.id = "scc-options";
+  
+  outerDiv.appendChild(innerDiv);
+  outerDiv.appendChild(ul);
+  modalDescript.appendChild(outerDiv);  
+  
+  const sccOptions = document.querySelector("#scc-options");
+  listSmallCodeProjs(sccOptions);
+  showList = true;
+}
+
+function hideSmallCodeProjList() {
+  showList = false;
+  modalDescript.removeChild(modalDescript.lastChild);
+}
+
+// get small projects local manifest
+async function listSmallCodeProjs(el) {
+  fetch("../Utilities/Manifests/SCC-link-Manifest.json")
+    .then((response) => response.json())
+    .then((json) => {
+      json.forEach((link) => {
+        let li = ``;
+        li += `<li class="link"><a href=${link.linkName}>${link.projName}</a></li>`;
+        el.innerHTML += li;
+      });
+    });
+}
 
 // Load catches and return parsed JSON
 

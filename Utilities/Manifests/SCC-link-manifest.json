@@ -1,0 +1,18 @@
+[
+  {
+    "projName": "React Demo Tic-Tac-Toe",
+    "linkName": "https://demo-react-tic-tac-toe-demo.netlify.app/"
+  },
+  {
+    "projName": "Forecast",
+    "linkName": "https://first-forecast-app.herokuapp.com/"
+  },
+  {
+    "projName": "Word Manifest",
+    "linkName": "https://word-manifest.netlify.app/"
+  },
+  {
+    "projName": "Fisher Catches",
+    "linkName": "https://my-fisher-catches.herokuapp.com/"
+  }
+]
