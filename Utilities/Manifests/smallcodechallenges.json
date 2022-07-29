@@ -1,0 +1,24 @@
+{
+  "smallcodechallenges": {
+    "ElpFuGrq7i3asEDab8pV": {
+      "projName": "React Demo Tic-Tac-Toe",
+      "linkName": "https://demo-react-tic-tac-toe-demo.netlify.app/"
+    },
+    "GqIdKt7UzsyjlPAKq1cU": {
+      "projName": "Forecast",
+      "linkName": "https://first-forecast-app.herokuapp.com/"
+    },
+    "DjR7fcB9i0mNtLmN6aAC": {
+      "projName": "Word Manifest",
+      "linkName": "https://word-manifest.netlify.app/"
+    },
+    "0KHRvAwV3peurj68Bead": {
+      "projName": "Fisher Catches",
+      "linkName": "https://my-fisher-catches.herokuapp.com/"
+    },
+    "KNpIwWjLBLbMPfdCIAP0": {
+      "projName": "Product Sorter",
+      "linkName": "https://product-sorter.netlify.app/"
+    }
+  }
+}

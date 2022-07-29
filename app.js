@@ -68,7 +68,7 @@ function showSmallCodeProjList() {
   modalDescript.appendChild(outerDiv);
 
   const sccOptions = document.querySelector("#scc-options");
-  listSmallCodeProjs(sccOptions);
+  fetchSmallCodeProjs(sccOptions);
   showList = true;
 }
 
@@ -78,13 +78,27 @@ function hideSmallCodeProjList() {
 }
 
 // get small projects local manifest
-async function listSmallCodeProjs(el) {
-  await fetch("../Utilities/Manifests/SCC-link-Manifest.json")
-    .then((response) => response.json())
-    .then((json) => {
-      json.forEach((link) => {
+async function fetchSmallCodeProjs(el) {
+  await fetch(
+    "https://kings-fisher-game-default-rtdb.firebaseio.com/manifests/smallcodechallenges.json"
+  )
+    .then((response) => {
+      if (!response.ok) {
+        const message = `Some error, ${response.status}`;
+        throw new Error(message);
+      }
+      return response.json();
+    })
+    .then((smallcodechallengesJson) => {
+      const currentProjValuesArr = Object.values(smallcodechallengesJson);
+      const currentProjFilter = currentProjValuesArr.filter(
+        (proj) => proj.projName !== document.title
+      );
+      currentProjFilter.forEach((proj) => {
+        const { linkName, projName } = proj;
+
         let li = ``;
-        li += `<li class="link"><a href=${link.linkName}>${link.projName}</a></li>`;
+        li += `<li class="link"><a href=${linkName}>${projName}</a></li>`;
         el.innerHTML += li;
       });
     })
@@ -115,7 +129,7 @@ async function loadCatches() {
   // console.log("fetched catches are", fetchedCatches);
 
   for (const key in fetchedCatches) {
-    // console.log(fetchedCatches[key]);
+    console.log(fetchedCatches[key]);
 
     catchesHTML += `<div class="catch" data-id="${key}">
     <label>Angler</label>

@@ -42,6 +42,10 @@ fieldset#main {
     margin: 0 50px;
 }
 
+#catches {
+    text-align: center;
+}
+
 input {
     padding: 5px 6px;
     margin: 5px 0;
@@ -61,4 +65,7 @@ fieldset hr, aside hr {
 
 .catch {
     border: 1px solid black;
+    display: inline-block;
+    margin: 0 15px 15px;
+    text-align: left;
 }
