@@ -26,11 +26,13 @@ continueButton.addEventListener("click", hideModal);
 modalLoadBtn.addEventListener("click", loadCatches);
 modalPopoverBtn.addEventListener("click", toggleList);
 
+// button disable logic
 app.forEach((el) => {
   el.disabled = true;
   el.style.cursor = "auto";
 });
 
+// Modal show toggle
 function hideModal() {
   const app = document.querySelectorAll("button:not(#modal button), input");
 
@@ -46,6 +48,7 @@ function hideModal() {
   });
 }
 
+// Small code list toggle
 function toggleList() {
   showList ? hideSmallCodeProjList() : showSmallCodeProjList();
 }
@@ -76,7 +79,7 @@ function hideSmallCodeProjList() {
 
 // get small projects local manifest
 async function listSmallCodeProjs(el) {
-  fetch("../Utilities/Manifests/SCC-link-Manifest.json")
+  await fetch("../Utilities/Manifests/SCC-link-Manifest.json")
     .then((response) => response.json())
     .then((json) => {
       json.forEach((link) => {
@@ -88,7 +91,6 @@ async function listSmallCodeProjs(el) {
 }
 
 // Load catches and return parsed JSON
-
 async function fetchCatches() {
   const response = await fetch(
     "https://kings-fisher-game-default-rtdb.firebaseio.com/catches/.json"
@@ -105,7 +107,6 @@ async function fetchCatches() {
 }
 
 // Loop over all the items in the object, create the html
-
 async function loadCatches() {
   // console.log("load catches button clicked");
   let catchesHTML = ``;
@@ -144,7 +145,6 @@ async function loadCatches() {
 }
 
 // Add a new catch and reload the catches
-
 async function addCatch() {
   console.log("add catch was clicked");
 
