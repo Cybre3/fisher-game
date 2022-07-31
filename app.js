@@ -56,19 +56,18 @@ function toggleList() {
 function showSmallCodeProjList() {
   const outerDiv = document.createElement("div");
   outerDiv.classList = "challenge-container";
-
+  
   const innerDiv = document.createElement("div");
   innerDiv.classList = "arrow";
-
+  
   const ul = document.createElement("ul");
   ul.id = "scc-options";
-
+  
   outerDiv.appendChild(innerDiv);
   outerDiv.appendChild(ul);
   modalDescript.appendChild(outerDiv);
-
-  const sccOptions = document.querySelector("#scc-options");
-  fetchSmallCodeProjs(sccOptions);
+  
+  listSmallCodeProjLinks();
   showList = true;
 }
 
@@ -77,32 +76,36 @@ function hideSmallCodeProjList() {
   modalDescript.removeChild(modalDescript.lastChild);
 }
 
-// get small projects local manifest
-async function fetchSmallCodeProjs(el) {
-  await fetch(
+// fetch small projects local manifest
+async function fetchSmallCodeProjs() {
+  const response = await fetch(
     "https://kings-fisher-game-default-rtdb.firebaseio.com/manifests/smallcodechallenges.json"
-  )
-    .then((response) => {
-      if (!response.ok) {
-        const message = `Some error, ${response.status}`;
-        throw new Error(message);
-      }
-      return response.json();
-    })
-    .then((smallcodechallengesJson) => {
-      const currentProjValuesArr = Object.values(smallcodechallengesJson);
-      const currentProjFilter = currentProjValuesArr.filter(
-        (proj) => proj.projName !== document.title
-      );
-      currentProjFilter.forEach((proj) => {
-        const { linkName, projName } = proj;
+    );
+    
+    if (!response.ok) {
+    const message = `Small Code Projs error: ${response.status}`;
+    throw new Error(message);
+  }
+  
+  const links = await response.json();
+  
+  return links;
+}
 
-        let li = ``;
-        li += `<li class="link"><a href=${linkName}>${projName}</a></li>`;
-        el.innerHTML += li;
-      });
-    })
-    .catch((err) => console.log(err));
+// List small code proj links
+async function listSmallCodeProjLinks() {
+  const sccOptions = document.querySelector("#scc-options");
+  const fetchedSmallCodeProjs = await fetchSmallCodeProjs();
+  const currentProjValuesArr = Object.values(fetchedSmallCodeProjs);
+  const currentProjFilter = currentProjValuesArr.filter((proj) => proj.projName !== document.title);
+  
+  currentProjFilter.forEach((proj) => {
+    const { linkName, projName } = proj;
+    let li = ``;
+    
+    li += `<li class="link"><a href=${linkName}>${projName}</a></li>`;
+    sccOptions.innerHTML += li;
+  });
 }
 
 // Load catches and return parsed JSON
@@ -112,7 +115,7 @@ async function fetchCatches() {
   );
 
   if (!response.ok) {
-    const message = `Some error, ${response.status}`;
+    const message = `fetch catches error: ${response.status}`;
     throw new Error(message);
   }
 
@@ -123,6 +126,7 @@ async function fetchCatches() {
 
 // Loop over all the items in the object, create the html
 async function loadCatches() {
+  
   // console.log("load catches button clicked");
   let catchesHTML = ``;
   let fetchedCatches = await fetchCatches();
@@ -183,6 +187,7 @@ async function addCatch() {
   loadCatches();
 }
 
+// make event listeners for each catch div
 function makeCatchListeners() {
   let catchDIVSEntries = Object.entries(catchDIVS);
   catchDIVSEntries.forEach((aCatch) => {
@@ -193,6 +198,7 @@ function makeCatchListeners() {
   });
 }
 
+// Handle update catch button
 async function updateCatch(e) {
   // console.log("updateCatch invoked!");
   let catchID = e.target.parentElement.getAttribute("data-id");
@@ -228,6 +234,7 @@ async function updateCatch(e) {
   loadCatches();
 }
 
+// Handle delete catch button
 async function deleteCatch(e) {
   let catchID = e.target.parentElement.getAttribute("data-id");
   // console.log(catchID);

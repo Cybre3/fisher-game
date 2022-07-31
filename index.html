@@ -4,15 +4,23 @@
     <meta charset="UTF-8" />
     <title>Biggest Catch</title>
     <link rel="icon" href="/public/favicon-fish.png" />
-    <link rel="stylesheet" href="./styles.css" />
-    <link rel="stylesheet" href="../ModalContainer/ModalContainer.css" />
-    <link
-      rel="stylesheet"
-      href="../ModalContainer/CodingChallengesContainer/CodingChallengesContainer.css"
-    />
+    <link rel="stylesheet" href="./styles/styles.css" />
+    <link rel="stylesheet" href="./styles/ModalContainer.css" />
+    <link rel="stylesheet" href="./styles/CodingChallengesContainer.css" />
+    <link rel="stylesheet" href="./styles/nav.css" />
   </head>
 
   <body>
+    <!-- NAV BAR -->
+    <nav id="navbar">
+      <a class='menu-btn' href="">Menu</a>
+      <!-- <div class="log-in-out">
+        <a class="login-btn" href="">Login</a>
+        <a class="logout-btn" href="">Logout</a>
+      </div> -->
+    </nav>
+
+    <!-- MODAL CONTAINER -->
     <div id="modal" class="modal-body">
       <h2 class="modal-title">Welcome to the Biggest Catch!</h2>
       <hr />
@@ -36,6 +44,7 @@
       </div>
     </div>
 
+    <!-- CATCHES CONTAINER -->
     <h1 class="page-title">Biggest Catches</h1>
     <fieldset id="main">
       <legend>Catches</legend>
@@ -64,6 +73,8 @@
         </div>
       </div>
     </fieldset>
+
+    <!-- SIDE LOAD AND ADD CONTAINER -->
     <aside>
       <button class="load">Load</button>
       <fieldset id="addForm">
@@ -84,5 +95,6 @@
       </fieldset>
     </aside>
     <script src="./app.js"></script>
+    <script src="./nav.js"></script>
   </body>
 </html>

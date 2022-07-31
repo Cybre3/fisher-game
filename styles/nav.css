@@ -1,0 +1,27 @@
+#navbar {
+  background-color: whitesmoke;
+  border-radius: 3px;
+  box-shadow: 4px -4px 15px 0px dodgerblue, 12px -11px 7px 0px dodgerblue,
+    20px -5px 7px 0px lightblue, 20px 6px 7px 0px lightblue, 13px 12px 17px 0px dodgerblue,
+    2px 17px 17px 0px lightgreen, -9px 21px 18px 0px lightcyan, -9px 6px 11px 0px dodgerblue,
+    -11px -9px 11px 0px lightskyblue, -11px -9px 11px 0px lightgreen,
+    -49px -50px 7px -23px rgba(0, 0, 0, 0);
+    margin-bottom: 75px;
+  padding: 10px 30px;
+}
+
+#navbar a {
+  color: black;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.log-in-out {
+  float: right;
+  text-align: right;
+}
+
+.log-in-out a:nth-of-type(odd) {
+  margin-right: 15px;
+}
